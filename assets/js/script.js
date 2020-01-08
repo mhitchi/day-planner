@@ -6,6 +6,9 @@ const currentDay = $('#currentDay');
 //const textArea = $('textarea');
 //const saveBtn = $('#saveButton');
 const container = $('.container');
+var textarea;
+var text;
+var saveButton;
 
 //get date
 var date = moment().format('MMM Do, YYYY');
@@ -29,16 +32,30 @@ for( var i = 0; i < hoursArr.length; i++ ) {
   var textCol = $('<div>');
   textCol.attr('class', 'col-xs-8 col-md-10 textarea');
     //make text area
-    var textarea = $('<textarea>');
+    textarea = $('<textarea>');
     textCol.append(textarea);
   row.append(textCol);
 
   var saveCol = $('<div>');
   saveCol.attr('class', 'col-xs-2 col-md-1 saveBtn');
     //make save button
-    var saveButton = $('<button>');
+    saveButton = $('<button>');
     saveCol.append(saveButton);
   row.append(saveCol);
+
+//TODO save button stores text input locally
+saveButton.on('click', makeNote);
+
+function makeNote(i) {
+  text = $('textarea').val();
+  localStorage.setItem('note', text);
+  localStorage.setItem('time', hoursArr[i]);
+}
+
+//TODO get text input from local storage and fill
+function showNote() {
+
+}
 
   //append row to container
   container.append(row);
