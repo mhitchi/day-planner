@@ -13,13 +13,17 @@ var date = moment().format('MMM Do, YYYY');
 currentDay.text("Today is " + date);
 
 //loop through hours 9-5 and create new row for each
-var hoursArr = [9,10,11,12,1,2,3,4,5];
+var hoursArr = ['9 AM','10 AM','11 AM','12 PM','1 PM','2 PM','3 PM','4 PM','5 PM'];
 for( var i = 0; i < hoursArr.length; i++ ) {
   var row = $('<div>');
   row.attr('class', 'row');
   //make columns and append columns to row
   var hourCol = $('<div>');
   hourCol.attr('class', 'col-xs-2 col-md-1 hour');
+    //make p tag and fill with corresponding hour, append to hourCol
+    var p = $('<p>');
+    p.text(hoursArr[i]);
+    hourCol.append(p);
   row.append(hourCol);
 
   var textCol = $('<div>');
