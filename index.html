@@ -8,17 +8,20 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
-    <link
+    <!-- fontawesome -->
+    <!-- <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
-    />
+    /> -->
+    <!-- other fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
 
@@ -40,15 +43,23 @@
         </div>
         <!-- save button -->
         <div  class="col-xs-2 col-md-1 saveBtn">
-          
+          <!-- <button id="saveButton" class="far fa-save"> -->
+            <button id="saveButton">
+            <!-- <img src="assets/images/save-icon.png" style="height: 40px; width: 40px;"> -->
+          </button>
         </div>
       </div>
     </div>
 
     <!-- reference Moment.js library -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+    <!-- <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script> -->
     <!-- reference jQuery library -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js">
+    </script>
+    <!-- also references Moment.js library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- reference my js -->
+    <script src="./assets/js/script.js">
+    </script>
   </body>
 </html>
