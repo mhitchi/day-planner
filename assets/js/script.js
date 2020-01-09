@@ -72,11 +72,11 @@ for( var i = 0; i < hoursArr.length; i++ ) {
       currentHour = currentHourPre;
     }
     if( hoursArr[i] === currentHour ){
-      textarea.addClass('present');
+      textCol.addClass('present');
     } else if( hoursArr[i] < currentHour ){
-      textarea.addClass('past');
+      textCol.addClass('past');
     } else if( hoursArr[i] > currentHour ){
-      textarea.addClass('future');
+      textCol.addClass('future');
     }
     
   }
