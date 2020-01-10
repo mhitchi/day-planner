@@ -13,8 +13,6 @@ const container = $('.container');
 var textarea;
 var inputTxt;
 var saveButton;
-//MAYBE
-var notesArr = ['','','','','','','','',''];
 var thisInput;
 var classNum;
 var idNum;
@@ -49,7 +47,13 @@ for( var i = 0; i < hoursArr.length; i++ ) {
     textarea = $('<textarea>');
     var rowNum = i;
     //textarea.addClass(rowNum);
-    textarea.attr('id', i);
+    textarea.attr('id', hoursArr[i]);
+    textarea.attr('placeholder', "Enter notes here, then click the \"save\" button.");
+    //check local storage for notes
+    if( localStorage.getItem(hoursArr[i])){
+      var note = localStorage.getItem(hoursArr[i]);
+      textarea.text(note);
+    }
     textCol.append(textarea);
   row.append(textCol);
 
@@ -59,9 +63,23 @@ for( var i = 0; i < hoursArr.length; i++ ) {
     saveButton = $('<button>');
     //saveButton.addClass(rowNumStr);
     saveButton.addClass('saveBtn');
-    saveButton.attr('data-index', i);
+    saveButton.attr('data-index', hoursArr[i]);
     saveCol.append(saveButton);
   row.append(saveCol);
+
+  //save button stores text input locally
+  saveButton.on('click', function() {
+    var button_id = $(this).attr('data-index');
+    makeNote(button_id);
+  });
+
+  function makeNote(button_id) {
+    //save hour and note to local storage
+    var hour = button_id;
+    var note = $('#' + hour).val();
+
+    localStorage.setItem(hour, note);
+  }
 
   //change color of textarea based on past present or future class
   function getHour() {
@@ -72,46 +90,10 @@ for( var i = 0; i < hoursArr.length; i++ ) {
     } else if( hoursArr[i] > moment().format("H") ){
       textCol.addClass('future');
     }
-    // console.log(currentHour);
   }
 
   getHour();
 
-  //save button stores text input locally
-  saveButton.on('click', makeNote);
-
-  function makeNote(button_id) {
-    var btn = $((this).attr('data-index'));
-
-    localStorage.setItem('hour', $('#' + btn));
-
-    //TODO get thisInput for each button
-    //get class of this row
-    //idNum =
-    //inputTxt = $('#'+ i).val();
-
-    // classNum = $("textarea").attr('class', i);
-    // inputTxt = classNum.val();
-    //console.log(inputTxt);
-    // notesArr.splice(i, 0, classNum);
-    //console.log(notesArr);
-    //notesArr.push(inputTxt);
-    localStorage.setItem('notesArr', JSON.stringify(notesArr));
-}
-
-//TODO get text input from local storage and fill
-function showNote() {
-  // if( inputTxt !== "" ){
-    //var fill = JSON.parse(localStorage.getItem(notesArr));
-    //textarea.attr('placeholder', fill);
-  //   //var fill = localStorage.getItem(inputTxt);
-  //   // textarea.attr('placeholder', fill);
-  // } else if( inputTxt == "" ){
-  //   console.log('nope');
-  // }
-}
-
-showNote();
   //append row to container
   container.append(row);
 }
