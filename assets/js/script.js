@@ -62,7 +62,7 @@ for( var i = 0; i < hoursArr.length; i++ ) {
     //make save button
     saveButton = $('<button>');
     //saveButton.addClass(rowNumStr);
-    saveButton.addClass('saveBtn');
+    saveButton.addClass('mySaveBtn');
     saveButton.attr('data-index', hoursArr[i]);
     saveCol.append(saveButton);
   row.append(saveCol);

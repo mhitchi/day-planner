@@ -9,14 +9,14 @@ textarea{
   width: 90%;
   border: none;
   resize: none;
-  color: #000000;
-  border-left: 1px solid black;
+  color: black;
   padding: 10px;
+  margin-top: 15px;
 }
 
 .textarea {
   background-color: honeydew;
-
+  border: 3px solid white;
 }
 
 .jumbotron {
@@ -40,13 +40,13 @@ textarea{
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
+  margin: 3px 3px;
 }
 
 .hour {
-  background-color: #ffffff;
+  background-color: white;
   color: #000000;
-  border-top: 1px dashed #000000;
+  border-top: 1px solid #06AED5;
 }
 
 .past {
@@ -65,7 +65,9 @@ textarea{
 }
 
 .saveBtn {
-  border-left: 1px solid black;
+  margin-top: 2px;
+  border-left: 3px solid white;
+  border-bottom: 3px solid white;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
@@ -77,8 +79,17 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
-#saveButton {
-  width: 50px;
-  height: 50px;
+.mySaveBtn {
+  margin: 25px 7px;
+  width: 30px;
+  height:30px;
+  background-color: #06AED5;
+  border: none;
+  background-image: url(../images/save-icon.png);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
 }
 
+p {
+  margin-top: 15px;
+}
