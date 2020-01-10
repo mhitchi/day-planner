@@ -2,8 +2,10 @@
 
 //get DOM elements
 const currentDay = $('#currentDay');
-var currentHourPre = moment().format('H');
-console.log(currentHourPre);
+var currentHourObj = moment();
+var currentHour = currentHourObj.format('h');
+//currentHourPre = moment().set('hour', ).format('h');
+console.log(currentHour);
 //const hour = $('hour');
 //const textArea = $('textarea');
 //const saveBtn = $('#saveButton');
@@ -24,7 +26,9 @@ var date = moment().format('MMM Do, YYYY');
 currentDay.text("Today is " + date);
 
 //loop through hours 9-5 and create new row for each
-var hoursArr = [9,10,11,12,1,2,3,4,5,6];
+var hoursArr = [9,10,11,12,13,14,15,16,17];
+
+
 for( var i = 0; i < hoursArr.length; i++ ) {
   var row = $('<div>');
   row.attr('class', 'row');
@@ -33,11 +37,7 @@ for( var i = 0; i < hoursArr.length; i++ ) {
   hourCol.attr('class', 'col-xs-2 col-md-1 hour');
     //make p tag and fill with corresponding hour, append to hourCol
     var p = $('<p>');
-      if( i >= 3 ){
-        p.text(hoursArr[i] + " PM");
-      } else {
-        p.text(hoursArr[i] + " AM");
-      }
+    p.text(moment().hour(hoursArr[i]).format("ha"));
 
     hourCol.addClass('time-block');
     hourCol.append(p);
@@ -65,20 +65,14 @@ for( var i = 0; i < hoursArr.length; i++ ) {
 
   //change color of textarea based on past present or future class
   function getHour() {
-    var currentHour;
-    if( currentHourPre > 12 ){
-      currentHour = currentHourPre - 12;
-    } else {
-      currentHour = currentHourPre;
-    }
-    if( hoursArr[i] === currentHour ){
+    if( hoursArr[i] === moment().format("H") ){
       textCol.addClass('present');
-    } else if( hoursArr[i] < currentHour ){
+    } else if( hoursArr[i] < moment().format("H") ){
       textCol.addClass('past');
-    } else if( hoursArr[i] > currentHour ){
+    } else if( hoursArr[i] > moment().format("H") ){
       textCol.addClass('future');
     }
-    
+    // console.log(currentHour);
   }
 
   getHour();
